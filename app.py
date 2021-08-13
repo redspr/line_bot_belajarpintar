@@ -26,8 +26,8 @@ from linebot.models import (
  
 app = Flask(__name__)
  
-bot = LineBotApi('9h0Xgd1h790XxEmDh8J1FQVluo1IEzJyHZrZwAAnSwsei3gv8jL9IDztvJDdYeRL2uQgRFhKz41y6Q1dtTOjacT3kS53LKJn+FYhDlgluNr7SbAlR7gJLncS5XZtoXimOTRDiyvygFM5+mfXs4HKtAdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('8d47cc5dafc17f6ff361f4b3990c4b62')
+bot = LineBotApi('//api-here//')
+handler = WebhookHandler('//secret-here//')
 
 @app.route("/") 
 def index():
@@ -51,7 +51,7 @@ def callback():
 
 @handler.add(MessageEvent,message=TextMessage)
 def handle_text_message(event):
-    url_add = 'http://botworks.rf.gd/add_task.php?'
+    url_add = 'http://redacted/add_task.php?'
     asg = []
     fltr = []
     tempList = ""
@@ -207,9 +207,10 @@ def handle_text_message(event):
 
 @handler.add(PostbackEvent)
 def handle_postback(event):
+    #File transfer using FTP service
     server = ftplib.FTP()
     server.connect('ftpupload.net', 21)
-    server.login('epiz_23534805','2BXJ2CNU3Y')
+    server.login('//username//','//password//')
     token = str(event.postback.data).split("&")
     match = 0
     with open('Tokenlist', 'r') as f:
